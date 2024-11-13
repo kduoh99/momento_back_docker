@@ -1,0 +1,53 @@
+spring:
+  profiles:
+    active: prod
+
+  datasource:
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    driver-class-name: ${spring.datasource.driver-class-name}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    open-in-view: false
+
+  data:
+    redis:
+      port: ${REDIS_PORT}
+      host: ${REDIS_SERVER}
+
+  mail:
+    port: ${MAIL_PORT}
+    host: ${MAIL_SERVER}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type: trace
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-validity-in-milliseconds: ${ACCESS_TOKEN_VALIDITY_IN_MILLISECONDS}
+  refresh-token-validity-in-milliseconds: ${REFRESH_TOKEN_VALIDITY_IN_MILLISECONDS}
+
+oauth:
+  kakao:
+    client-id: ${KAKAO_CLIENT_ID}
+    redirect-uri: ${KAKAO_REDIRECT_URI}
+    admin-key: ${KAKAO_ADMIN_KEY}
+    token-url: ${KAKAO_TOKEN_URL}
+
+openai:
+  model: ${OPEN_AI_MODEL}
+  api:
+    key: ${OPEN_AI_API_KEY}
+    url: ${OPEN_AI_API_URL}
+  prompt: ${OPEN_AI_PROMPT}
